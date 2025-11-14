@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(IndianFoodHanoiApp());
+}
+
+class IndianFoodHanoiApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Indian Food Hanoi',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.deepOrange,
+      ),
+      home: RoleSelectorScreen(),
+    );
+  }
+}
+
+class RoleSelectorScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Indian Food Hanoi")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RoleButton(text: "Customer", color: Colors.green, onTap: () {}),
+            SizedBox(height: 20),
+            RoleButton(text: "Restaurant", color: Colors.orange, onTap: () {}),
+            SizedBox(height: 20),
+            RoleButton(text: "Driver", color: Colors.blue, onTap: () {}),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class RoleButton extends StatelessWidget {
+  final String text;
+  final Color color;
+  final VoidCallback onTap;
+
+  RoleButton({required this.text, required this.color, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: color,
+        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+      ),
+      onPressed: onTap,
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}
