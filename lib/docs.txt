@@ -1,0 +1,51 @@
+User {
+  id: string
+  name: string
+  phone: string
+  email: string
+  role: "customer" | "restaurant" | "driver"
+  restaurantId?: string
+}
+
+Restaurant {
+  id: string
+  name: string
+  address: string
+  imageUrl: string
+  rating: number
+  isOpen: boolean
+}
+
+MenuItem {
+  id: string
+  restaurantId: string
+  name: string
+  priceVnd: number
+  imageUrl: string
+  isAvailable: boolean
+}
+
+OrderItem {
+  menuItemId: string
+  name: string
+  qty: number
+  priceVnd: number
+}
+
+Order {
+  id: string
+  customerId: string
+  restaurantId: string
+  items: OrderItem[]
+  totalVnd: number
+  status: "new" | "accepted" | "preparing" | "ready" | "picked" | "on_the_way" | "delivered"
+  createdAt: timestamp
+}
+
+Delivery {
+  id: string
+  orderId: string
+  driverId: string
+  status: "assigned" | "picked" | "on_the_way" | "delivered"
+  location: GeoPoint?
+}
